@@ -1,6 +1,15 @@
 <?php
 require_once 'IP2Location.php';
-$db = new \IP2Location\Database('IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE.BIN', \IP2Location\Database::FILE_IO);
+
+if ( strpos($_REQUEST['ip'], ":") !== FALSE)
+{
+    $db = new \IP2Location\Database('IPV6-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE.BIN', \IP2Location\Database::FILE_IO);
+}
+else 
+{
+    $db = new \IP2Location\Database('IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE.BIN', \IP2Location\Database::FILE_IO);
+}
+
 $ip=$_REQUEST['ip'];
 $records = $db->lookup($ip, \IP2Location\Database::ALL);
 $ret = array(); 
