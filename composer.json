@@ -1,6 +1,0 @@
-{
-    "require": {
-        "google/cloud": "0.101.1",
-        "ip2location/ip2location-php": "1.0"
-    }
-}
